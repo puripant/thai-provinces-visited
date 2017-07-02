@@ -4,7 +4,7 @@ path:hover {
 }
 
 /* Style for Custom Tooltip */
-div.tooltip {
+/*div.tooltip {
  	position: absolute;
 	text-align: center;
 	width: 60px;
@@ -15,16 +15,16 @@ div.tooltip {
 	border: 0px;
 	border-radius: 8px;
 	pointer-events: none;
-}
+}*/
 
 /* Legend Font Style */
 body {
-	font: 11px sans-serif;
+	font: 12px sans-serif;
 }
 
 /* Legend Position Style */
 .legend {
 	position:absolute;
-	left:800px;
-	top:350px;
+	left:250px;
+	top:480px;
 }
