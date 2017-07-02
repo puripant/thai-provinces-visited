@@ -6,8 +6,8 @@ state,visited
 "NakhonPathom", 1
 "NakhonSawan", 0
 "Nonthaburi", 1
-"PathumThani", 0
-"PhraNakhonSiAyutthaya", 0
+"PathumThani", 1
+"PhraNakhonSiAyutthaya", 1
 "Phichit", 0
 "Phitsanulok", 0
 "LopBuri", 1
@@ -25,11 +25,11 @@ state,visited
 "Chachoengsao", 0
 "ChonBuri", 1
 "Trat", 0
-"PrachinBuri", 0
+"PrachinBuri", 1
 "Rayong", 1
 "SaKaeo", 0
 "Kanchanaburi", 1
-"Tak", 0
+"Tak", 1
 "PrachuapKhiriKhan", 1
 "Ratchaburi", 0
 "Phetchaburi", 0
@@ -38,7 +38,7 @@ state,visited
 "Lampang", 0
 "Lamphun", 0
 "Uttaradit", 0
-"ChiangRai", 0
+"ChiangRai", 1
 "ChiangMai", 1
 "Phrae", 0
 "MaeHongSon", 1
@@ -50,8 +50,8 @@ state,visited
 "BuriRam", 0
 "MahaSarakham", 0
 "Mukdahan", 0
-"Yasothon", 0
-"RoiEt", 0
+"Yasothon", 1
+"RoiEt", 1
 "SiSaKet", 0
 "SakonNakhon", 0
 "Surin", 0
@@ -74,4 +74,4 @@ state,visited
 "Ranong", 0
 "Songkhla", 0
 "Satun", 0
-"SuratThani", 0
+"SuratThani", 1

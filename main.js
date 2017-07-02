@@ -101,3 +101,10 @@ d3.csv("data/provinces-visited.csv", function(data) {
             	  .text(function(d) { return d; });
   });
 });
+
+// $('.ui.dropdown')
+//   .dropdown({
+//     onChange: function(value, text, $selectedItem) {
+//       console.log(value + " " + text);
+//     }
+//   });
