@@ -16,13 +16,36 @@ var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
 
 // Define linear scale for output
 var color = d3.scaleLinear()
-  .range(["gainsboro","mediumaquamarine","darkcyan"]);
+  .domain([0, 1])
+  .range(["gainsboro","mediumaquamarine"]);
 
-var legendText = ["เคยอยู่", "เคยเที่ยว", "ไม่เคยอยู่/เที่ยว"];
+var legendText = ["เคยไป", "ไม่เคยไป"];
+
+// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
+var legend = d3.select("#result").append("svg")
+    .attr("class", "legend")
+    .attr("width", 140)
+    .attr("height", 100)
+    .selectAll("g")
+  .data(color.domain().slice().reverse())
+    .enter()
+    .append("g")
+    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+        legend.append("rect")
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", color);
+        legend.append("text")
+          .data(legendText)
+            .attr("x", 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .text(function(d) { return d; });
 
 //Create SVG element and append map to the SVG
-var svg = d3.select("body")
+var svg = d3.select("#result")
   .append("svg")
+  .attr("class", "map")
   .attr("width", width)
   .attr("height", height);
 
@@ -32,79 +55,62 @@ var svg = d3.select("body")
 //     .attr("class", "tooltip")
 //     .style("opacity", 0);
 
-// Load in my states data!
+var geo;
+var updateGeo = function(province, visited) {
+  // Find the corresponding province inside the GeoJSON
+  for (var i = 0; i < geo.features.length; i++)  {
+    if (province === geo.features[i].properties.CHA_NE) {
+      geo.features[i].properties.visited = visited;
+      break;
+    }
+  }
+}
+var updateMap = function() {
+  svg.selectAll("path")
+    .style("fill", function(d) {
+      var value = d.properties.visited;
+      return value ? color(value) : "gainsboro";
+    });
+}
+
 d3.csv("data/provinces-visited.csv", function(data) {
-  color.domain([0, 1, 2]); // setting the range of the input data
+  // dropdown
+  var $provinces = $("#provinces");
+  data.forEach(function(row) {
+    $provinces.append($("<option>", {
+      value: row.province,
+      text: row.provinceTH
+    }));
+  });
+  $('.ui.dropdown')
+    .dropdown({
+      onAdd: function(value, text, $selectedItem) {
+        updateGeo(value, 1);
+        updateMap();
+      },
+      onRemove: function(value, text, $selectedItem) {
+        updateGeo(value, 0);
+        updateMap();
+      }
+    });
 
   // Load GeoJSON data and merge with states data
   d3.json("data/thailand.json", function(json) {
-    // Loop through each state data value in the .csv file
+    geo = json;
+
+    // Loop through each province in the .csv file
     for (var i = 0; i < data.length; i++) {
-    	// Grab State Name
-    	var dataState = data[i].state;
-
-    	// Grab data value
-    	var dataValue = data[i].visited;
-
-    	// Find the corresponding state inside the GeoJSON
-    	for (var j = 0; j < json.features.length; j++)  {
-    		var jsonState = json.features[j].properties.CHA_NE;
-
-    		if (dataState == jsonState) {
-      		// Copy the data value into the JSON
-      		json.features[j].properties.visited = dataValue;
-
-      		// Stop looking through the JSON
-      		break;
-    		}
-    	}
+      updateGeo(data[i].province, data[i].visited);
     }
 
     // Bind the data to the SVG and create one path per GeoJSON feature
     svg.selectAll("path")
-    	.data(json.features)
-    	.enter()
-    	.append("path")
-    	.attr("d", path)
-    	.style("stroke", "#fff")
-    	.style("stroke-width", "1")
-    	.style("fill", function(d) {
-        	// Get data value
-        	var value = d.properties.visited;
-
-        	if (value) {
-          	return color(value);
-        	} else {
-          	return "gainsboro";
-        	}
-        });
-
-    // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-    var legend = d3.select("body").append("svg")
-        .attr("class", "legend")
-        .attr("width", 140)
-        .attr("height", 200)
-        .selectAll("g")
-      .data(color.domain().slice().reverse())
-        .enter()
-        .append("g")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-          	legend.append("rect")
-          	  .attr("width", 18)
-          	  .attr("height", 18)
-          	  .style("fill", color);
-          	legend.append("text")
-        		  .data(legendText)
-            	  .attr("x", 24)
-            	  .attr("y", 9)
-            	  .attr("dy", ".35em")
-            	  .text(function(d) { return d; });
+        .data(geo.features)
+      .enter()
+      	.append("path")
+      	.attr("d", path)
+      	.style("stroke", "#fff")
+      	.style("stroke-width", "1");
+    updateMap();
   });
 });
-
-// $('.ui.dropdown')
-//   .dropdown({
-//     onChange: function(value, text, $selectedItem) {
-//       console.log(value + " " + text);
-//     }
-//   });

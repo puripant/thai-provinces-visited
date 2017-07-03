@@ -1,77 +1,77 @@
-state,visited
-"Bangkok", 2
-"KamphaengPhet", 0
-"ChaiNat", 0
-"NakhonNayok", 0
-"NakhonPathom", 1
-"NakhonSawan", 0
-"Nonthaburi", 1
-"PathumThani", 1
-"PhraNakhonSiAyutthaya", 1
-"Phichit", 0
-"Phitsanulok", 0
-"LopBuri", 1
-"SamutPrakan", 1
-"SamutSongkhram", 1
-"SamutSakhon", 1
-"Saraburi", 0
-"SingBuri", 0
-"SuphanBuri", 0
-"Sukhothai", 0
-"UthaiThani", 0
-"AngThong", 0
-"Phetchabun", 0
-"Chanthaburi", 0
-"Chachoengsao", 0
-"ChonBuri", 1
-"Trat", 0
-"PrachinBuri", 1
-"Rayong", 1
-"SaKaeo", 0
-"Kanchanaburi", 1
-"Tak", 1
-"PrachuapKhiriKhan", 1
-"Ratchaburi", 0
-"Phetchaburi", 0
-"Nan", 0
-"Phayao", 0
-"Lampang", 0
-"Lamphun", 0
-"Uttaradit", 0
-"ChiangRai", 1
-"ChiangMai", 1
-"Phrae", 0
-"MaeHongSon", 1
-"Kalasin", 0
-"KhonKaen", 0
-"Chaiyaphum", 0
-"NakhonPhanom", 0
-"NakhonRatchasima", 1
-"BuriRam", 0
-"MahaSarakham", 0
-"Mukdahan", 0
-"Yasothon", 1
-"RoiEt", 1
-"SiSaKet", 0
-"SakonNakhon", 0
-"Surin", 0
-"NongKhai", 0
-"NongBuaLamPhu", 0
-"AmnatCharoen", 0
-"UdonThani", 0
-"UbonRatchathani", 0
-"Loei", 0
-"Krabi", 1
-"Chumphon", 0
-"Trang", 1
-"NakhonSiThammarat", 1
-"Narathiwat", 0
-"Pattani", 0
-"Phang-nga", 1
-"Phatthalung", 0
-"Phuket", 1
-"Yala", 0
-"Ranong", 0
-"Songkhla", 0
-"Satun", 0
-"SuratThani", 1
+provinceTH,province,visited
+กรุงเทพฯ,Bangkok,0
+กำแพงเพชร,KamphaengPhet,0
+ชัยนาท,ChaiNat,0
+นครนายก,NakhonNayok,0
+นครปฐม,NakhonPathom,0
+นครสวรรค์,NakhonSawan,0
+นนทบุรี,Nonthaburi,0
+ปทุมธานี,PathumThani,0
+อยุธยา,PhraNakhonSiAyutthaya,0
+พิจิตร,Phichit,0
+พิษณุโลก,Phitsanulok,0
+ลพบุรี,LopBuri,0
+สมุทรปราการ,SamutPrakan,0
+สมุทรสงคราม,SamutSongkhram,0
+สมุทรสาคร,SamutSakhon,0
+สระบุรี,Saraburi,0
+สิงห์บุรี,SingBuri,0
+สุพรรณบุรี,SuphanBuri,0
+สุโขทัย,Sukhothai,0
+อุทัยธานี,UthaiThani,0
+อ่างทอง,AngThong,0
+เพชรบูรณ์,Phetchabun,0
+จันทบุรี,Chanthaburi,0
+ฉะเชิงเทรา,Chachoengsao,0
+ชลบุรี,ChonBuri,0
+ตราด,Trat,0
+ปราจีนบุรี,PrachinBuri,0
+ระยอง,Rayong,0
+สระแก้ว,SaKaeo,0
+กาญจนบุรี,Kanchanaburi,0
+ตาก,Tak,0
+ประจวบคีรีขันธ์,PrachuapKhiriKhan,0
+ราชบุรี,Ratchaburi,0
+เพชรบุรี,Phetchaburi,0
+น่าน,Nan,0
+พะเยา,Phayao,0
+ลำปาง,Lampang,0
+ลำพูน,Lamphun,0
+อุตรดิตถ์,Uttaradit,0
+เชียงราย,ChiangRai,0
+เชียงใหม่,ChiangMai,0
+แพร่,Phrae,0
+แม่ฮ่องสอน,MaeHongSon,0
+กาฬสินธุ์,Kalasin,0
+ขอนแก่น,KhonKaen,0
+ชัยภูมิ,Chaiyaphum,0
+นครพนม,NakhonPhanom,0
+นครราชสีมา,NakhonRatchasima,0
+บุรีรัมย์,BuriRam,0
+มหาสารคาม,MahaSarakham,0
+มุกดาหาร,Mukdahan,0
+ยโสธร,Yasothon,0
+ร้อยเอ็ด,RoiEt,0
+ศรีสะเกษ,SiSaKet,0
+สกลนคร,SakonNakhon,0
+สุรินทร์,Surin,0
+หนองคาย,NongKhai,0
+หนองบัวลำภู,NongBuaLamPhu,0
+อำนาจเจริญ,AmnatCharoen,0
+อุดรธานี,UdonThani,0
+อุบลราชธานี,UbonRatchathani,0
+เลย,Loei,0
+กระบี่,Krabi,0
+ชุมพร,Chumphon,0
+ตรัง,Trang,0
+นครศรีธรรมราช,NakhonSiThammarat,0
+นราธิวาส,Narathiwat,0
+ปัตตานี,Pattani,0
+พังงา,Phang-nga,0
+พัทลุง,Phatthalung,0
+ภูเก็ต,Phuket,0
+ยะลา,Yala,0
+ระนอง,Ranong,0
+สงขลา,Songkhla,0
+สตูล,Satun,0
+สุราษฎร์ธานี,SuratThani,0
