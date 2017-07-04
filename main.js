@@ -59,8 +59,12 @@ var geo;
 var updateGeo = function(province, visited) {
   for (var i = 0; i < geo.features.length; i++)  {
     if (province === geo.features[i].properties.CHA_NE) {
-      geo.features[i].properties.visited = visited;
-      break;
+      if (typeof visited != "undefined") {
+        geo.features[i].properties.visited = visited;
+        break;
+      } else {
+        return geo.features[i].properties.visited;
+      }
     }
   }
 }
@@ -134,6 +138,16 @@ d3.csv("data/provinces-visited.csv", function(data) {
             tooltip.transition()
               .duration(500)
               .style("opacity", 0);
+          })
+        .on("click", function(d) {
+            if (updateGeo(d.properties.CHA_NE) == 0) {
+              $("#provinces").dropdown("set selected", d.properties.CHA_NE);
+              updateGeo(d.properties.CHA_NE, 1);
+            } else {
+              $("#provinces").dropdown("remove selected", d.properties.CHA_NE);
+              updateGeo(d.properties.CHA_NE, 0);
+            }
+            updateMap();
           });
     updateMap();
   });
