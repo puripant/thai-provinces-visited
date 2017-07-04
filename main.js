@@ -58,7 +58,7 @@ var tooltip = d3.select("body")
 var geo;
 var updateGeo = function(province, visited) {
   for (var i = 0; i < geo.features.length; i++)  {
-    if (province === geo.features[i].properties.CHA_NE) {
+    if (province === geo.features[i].properties.NAME_1) {
       if (typeof visited != "undefined") {
         geo.features[i].properties.visited = visited;
         break;
@@ -110,13 +110,13 @@ d3.csv("data/provinces-visited.csv", function(data) {
     });
 
   // Load GeoJSON data and merge with states data
-  d3.json("data/thailand.json", function(json) {
+  d3.json("data/thailand-new.json", function(json) {
     geo = json;
 
     // Loop through each province in the .csv file
     provinces.forEach(function(d) {
       updateGeo(d.province, d.visited);
-    })
+    });
 
     // Bind the data to the SVG and create one path per GeoJSON feature
     svg.selectAll("path")
@@ -130,7 +130,7 @@ d3.csv("data/provinces-visited.csv", function(data) {
             tooltip.transition()
               .duration(200)
               .style("opacity", 0.8);
-            tooltip.html(findProvinceTH(d.properties.CHA_NE))
+            tooltip.html(findProvinceTH(d.properties.NAME_1))
               .style("left", (d3.event.pageX) + "px")
               .style("top", (d3.event.pageY - 30) + "px");
           })
@@ -140,12 +140,12 @@ d3.csv("data/provinces-visited.csv", function(data) {
               .style("opacity", 0);
           })
         .on("click", function(d) {
-            if (updateGeo(d.properties.CHA_NE) == 0) {
-              $("#provinces").dropdown("set selected", d.properties.CHA_NE);
-              updateGeo(d.properties.CHA_NE, 1);
+            if (updateGeo(d.properties.NAME_1) == 0) {
+              $("#provinces").dropdown("set selected", d.properties.NAME_1);
+              updateGeo(d.properties.NAME_1, 1);
             } else {
-              $("#provinces").dropdown("remove selected", d.properties.CHA_NE);
-              updateGeo(d.properties.CHA_NE, 0);
+              $("#provinces").dropdown("remove selected", d.properties.NAME_1);
+              updateGeo(d.properties.NAME_1, 0);
             }
             updateMap();
           });
