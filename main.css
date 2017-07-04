@@ -59,3 +59,7 @@ body {
   background-image: url('logo_boonmeelab.png');
   width: 150px;
 }
+
+.ui.search.dropdown .menu {
+	max-height: calc(480px - 100%);
+}
