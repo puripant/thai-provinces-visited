@@ -17,7 +17,7 @@ var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
 // Define linear scale for output
 var color = d3.scaleLinear()
   .domain([0, 1])
-  .range(["gainsboro","mediumaquamarine"]);
+  .range(["gainsboro", "#eb307c"]);
 
 var legendText = ["เคยไป", "ไม่เคยไป"];
 
@@ -49,15 +49,14 @@ var svg = d3.select("#result")
   .attr("width", width)
   .attr("height", height);
 
-// // Append Div for tooltip to SVG
-// var div = d3.select("body")
-//   .append("div")
-//     .attr("class", "tooltip")
-//     .style("opacity", 0);
+// Append Div for tooltip to SVG
+var tooltip = d3.select("body")
+  .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 var geo;
 var updateGeo = function(province, visited) {
-  // Find the corresponding province inside the GeoJSON
   for (var i = 0; i < geo.features.length; i++)  {
     if (province === geo.features[i].properties.CHA_NE) {
       geo.features[i].properties.visited = visited;
@@ -73,10 +72,22 @@ var updateMap = function() {
     });
 }
 
+var provinces;
+var findProvinceTH = function(province) {
+  // Find the corresponding province inside the GeoJSON
+  for (var i = 0; i < provinces.length; i++)  {
+    if (province === provinces[i].province) {
+      return provinces[i].provinceTH;
+    }
+  }
+}
+
 d3.csv("data/provinces-visited.csv", function(data) {
+  provinces = data;
+
   // dropdown
   var $provinces = $("#provinces");
-  data.forEach(function(row) {
+  provinces.forEach(function(row) {
     $provinces.append($("<option>", {
       value: row.province,
       text: row.provinceTH
@@ -99,9 +110,9 @@ d3.csv("data/provinces-visited.csv", function(data) {
     geo = json;
 
     // Loop through each province in the .csv file
-    for (var i = 0; i < data.length; i++) {
-      updateGeo(data[i].province, data[i].visited);
-    }
+    provinces.forEach(function(d) {
+      updateGeo(d.province, d.visited);
+    })
 
     // Bind the data to the SVG and create one path per GeoJSON feature
     svg.selectAll("path")
@@ -110,7 +121,20 @@ d3.csv("data/provinces-visited.csv", function(data) {
       	.append("path")
       	.attr("d", path)
       	.style("stroke", "#fff")
-      	.style("stroke-width", "1");
+      	.style("stroke-width", "1")
+        .on("mouseover", function(d) {
+            tooltip.transition()
+              .duration(200)
+              .style("opacity", 0.8);
+            tooltip.html(findProvinceTH(d.properties.CHA_NE))
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 30) + "px");
+          })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+              .duration(500)
+              .style("opacity", 0);
+          });
     updateMap();
   });
 });
