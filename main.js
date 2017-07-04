@@ -87,6 +87,7 @@ var findProvinceTH = function(province) {
 }
 
 d3.csv("data/provinces-visited.csv", function(data) {
+// d3.csv("data/place-province.csv", function(places) {
   provinces = data;
 
   // dropdown
@@ -97,6 +98,12 @@ d3.csv("data/provinces-visited.csv", function(data) {
       text: row.provinceTH
     }));
   });
+  // places.forEach(function(row) {
+  //   $provinces.append($("<option>", {
+  //     value: row.province,
+  //     text: row.place
+  //   }));
+  // });
   $('.ui.dropdown')
     .dropdown({
       onAdd: function(value, text, $selectedItem) {
@@ -151,4 +158,5 @@ d3.csv("data/provinces-visited.csv", function(data) {
           });
     updateMap();
   });
+// })
 });
