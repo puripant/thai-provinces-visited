@@ -1,77 +1,77 @@
 state,visited
-"Bangkok", 2
-"KamphaengPhet", 0
-"ChaiNat", 0
-"NakhonNayok", 0
-"NakhonPathom", 1
-"NakhonSawan", 0
-"Nonthaburi", 1
-"PathumThani", 1
-"PhraNakhonSiAyutthaya", 1
-"Phichit", 0
-"Phitsanulok", 0
-"LopBuri", 1
-"SamutPrakan", 1
-"SamutSongkhram", 1
-"SamutSakhon", 1
-"Saraburi", 0
-"SingBuri", 0
-"SuphanBuri", 0
-"Sukhothai", 0
-"UthaiThani", 0
-"AngThong", 0
-"Phetchabun", 0
-"Chanthaburi", 0
-"Chachoengsao", 0
-"ChonBuri", 1
-"Trat", 0
-"PrachinBuri", 1
-"Rayong", 1
-"SaKaeo", 0
-"Kanchanaburi", 1
-"Tak", 1
-"PrachuapKhiriKhan", 1
-"Ratchaburi", 0
-"Phetchaburi", 0
-"Nan", 0
-"Phayao", 0
-"Lampang", 0
-"Lamphun", 0
-"Uttaradit", 0
-"ChiangRai", 1
-"ChiangMai", 1
-"Phrae", 0
-"MaeHongSon", 1
-"Kalasin", 1
-"KhonKaen", 0
-"Chaiyaphum", 0
-"NakhonPhanom", 0
-"NakhonRatchasima", 1
-"BuriRam", 0
-"MahaSarakham", 0
-"Mukdahan", 0
-"Yasothon", 1
-"RoiEt", 1
-"SiSaKet", 1
-"SakonNakhon", 0
-"Surin", 0
-"NongKhai", 0
-"NongBuaLamPhu", 0
-"AmnatCharoen", 0
-"UdonThani", 0
-"UbonRatchathani", 0
-"Loei", 0
-"Krabi", 1
-"Chumphon", 0
-"Trang", 1
-"NakhonSiThammarat", 1
-"Narathiwat", 0
-"Pattani", 0
-"Phang-nga", 1
-"Phatthalung", 0
-"Phuket", 1
-"Yala", 0
-"Ranong", 0
-"Songkhla", 0
-"Satun", 0
-"SuratThani", 1
+"Bangkok",2
+"KamphaengPhet",0
+"ChaiNat",0
+"NakhonNayok",0
+"NakhonPathom",1
+"NakhonSawan",0
+"Nonthaburi",1
+"PathumThani",1
+"PhraNakhonSiAyutthaya",1
+"Phichit",0
+"Phitsanulok",0
+"LopBuri",1
+"SamutPrakan",1
+"SamutSongkhram",1
+"SamutSakhon",1
+"Saraburi",0
+"SingBuri",0
+"SuphanBuri",0
+"Sukhothai",0
+"UthaiThani",0
+"AngThong",0
+"Phetchabun",0
+"Chanthaburi",0
+"Chachoengsao",0
+"ChonBuri",1
+"Trat",1
+"PrachinBuri",1
+"Rayong",1
+"SaKaeo",0
+"Kanchanaburi",1
+"Tak",1
+"PrachuapKhiriKhan",1
+"Ratchaburi",0
+"Phetchaburi",0
+"Nan",0
+"Phayao",0
+"Lampang",0
+"Lamphun",0
+"Uttaradit",0
+"ChiangRai",1
+"ChiangMai",1
+"Phrae",0
+"MaeHongSon",1
+"Kalasin",1
+"KhonKaen",0
+"Chaiyaphum",0
+"NakhonPhanom",0
+"NakhonRatchasima",1
+"BuriRam",0
+"MahaSarakham",0
+"Mukdahan",0
+"Yasothon",1
+"RoiEt",1
+"SiSaKet",1
+"SakonNakhon",0
+"Surin",0
+"NongKhai",0
+"NongBuaLamPhu",0
+"AmnatCharoen",0
+"UdonThani",0
+"UbonRatchathani",0
+"Loei",0
+"Krabi",1
+"Chumphon",1
+"Trang",1
+"NakhonSiThammarat",1
+"Narathiwat",0
+"Pattani",0
+"Phang-nga",1
+"Phatthalung",0
+"Phuket",1
+"Yala",0
+"Ranong",0
+"Songkhla",0
+"Satun",0
+"SuratThani",1
