@@ -1,9 +1,9 @@
 //Width and height of map
-var width = 400;
-var height = 700;
+let width = 400;
+let height = 700;
 
 // D3 Projection
-var projection = d3.geoAlbers()
+let projection = d3.geoAlbers()
   .center([100.0, 13.5])
   .rotate([0, 24])
   .parallels([5, 21])
@@ -11,18 +11,18 @@ var projection = d3.geoAlbers()
   .translate([-100, 200]);
 
 // Define path generator
-var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
+let path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
   .projection(projection); // tell path generator to use albersUsa projection
 
 // Define linear scale for output
-var color = d3.scaleLinear()
+let color = d3.scaleLinear()
   .domain([0, 1])
   .range(["gainsboro", "#eb307c"]);
 
-var legendText = ["เคยไป", "ไม่เคยไป"];
+let legendText = ["เคยไป", "ไม่เคยไป"];
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-var legend = d3.select("#result").append("svg")
+let legend = d3.select("#result").append("svg")
     .attr("class", "legend")
     .attr("width", 140)
     .attr("height", 100)
@@ -30,34 +30,34 @@ var legend = d3.select("#result").append("svg")
   .data(color.domain().slice().reverse())
     .enter()
     .append("g")
-    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-        legend.append("rect")
-          .attr("width", 18)
-          .attr("height", 18)
-          .style("fill", color);
-        legend.append("text")
-          .data(legendText)
-            .attr("x", 24)
-            .attr("y", 9)
-            .attr("dy", ".35em")
-            .text(function(d) { return d; });
+    .attr("transform", (d, i) => "translate(0," + i * 20 + ")");
+legend.append("rect")
+  .attr("width", 18)
+  .attr("height", 18)
+  .style("fill", color);
+legend.append("text")
+  .data(legendText)
+    .attr("x", 24)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .text(d => d);
 
 //Create SVG element and append map to the SVG
-var svg = d3.select("#result")
+let svg = d3.select("#result")
   .append("svg")
   .attr("class", "map")
   .attr("width", width)
   .attr("height", height);
 
 // Append Div for tooltip to SVG
-var tooltip = d3.select("body")
+let tooltip = d3.select("body")
   .append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-var geo;
-var updateGeo = function(province, visited) {
-  for (var i = 0; i < geo.features.length; i++)  {
+let geo;
+let updateGeo = (province, visited) => {
+  for (let i = 0; i < geo.features.length; i++)  {
     if (province === geo.features[i].properties.NAME_1) {
       if (typeof visited != "undefined") {
         geo.features[i].properties.visited = visited;
@@ -68,31 +68,31 @@ var updateGeo = function(province, visited) {
     }
   }
 }
-var updateMap = function() {
+let updateMap = () => {
   svg.selectAll("path")
-    .style("fill", function(d) {
-      var value = d.properties.visited;
+    .style("fill", (d) => {
+      let value = d.properties.visited;
       return value ? color(value) : "gainsboro";
     });
 }
 
-var provinces;
-var findProvinceTH = function(province) {
+let provinces;
+let findProvinceTH = (province) => {
   // Find the corresponding province inside the GeoJSON
-  for (var i = 0; i < provinces.length; i++)  {
+  for (let i = 0; i < provinces.length; i++)  {
     if (province === provinces[i].province) {
       return provinces[i].provinceTH;
     }
   }
 }
 
-d3.csv("data/provinces-visited.csv", function(data) {
+d3.csv("data/provinces-visited.csv").then((data) => {
 // d3.csv("data/place-province.csv", function(places) {
   provinces = data;
 
   // dropdown
-  var $provinces = $("#provinces");
-  provinces.forEach(function(row) {
+  let $provinces = $("#provinces");
+  provinces.forEach((row) => {
     $provinces.append($("<option>", {
       value: row.province,
       text: row.provinceTH
@@ -106,22 +106,22 @@ d3.csv("data/provinces-visited.csv", function(data) {
   // });
   $('.ui.dropdown')
     .dropdown({
-      onAdd: function(value, text, $selectedItem) {
+      onAdd: (value, text, $selectedItem) => {
         updateGeo(value, 1);
         updateMap();
       },
-      onRemove: function(value, text, $selectedItem) {
+      onRemove: (value, text, $selectedItem) => {
         updateGeo(value, 0);
         updateMap();
       }
     });
 
   // Load GeoJSON data and merge with states data
-  d3.json("data/thailand-new.json", function(json) {
+  d3.json("data/thailand-new.json").then((json) => {
     geo = json;
 
     // Loop through each province in the .csv file
-    provinces.forEach(function(d) {
+    provinces.forEach((d) => {
       updateGeo(d.province, d.visited);
     });
 
@@ -133,20 +133,20 @@ d3.csv("data/provinces-visited.csv", function(data) {
       	.attr("d", path)
       	.style("stroke", "#fff")
       	.style("stroke-width", "1")
-        .on("mouseover", function(d) {
+        .on("mouseover", (event, d) => {
             tooltip.transition()
               .duration(200)
               .style("opacity", 0.8);
             tooltip.html(findProvinceTH(d.properties.NAME_1))
-              .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 30) + "px");
+              .style("left", (event.pageX) + "px")
+              .style("top", (event.pageY - 30) + "px");
           })
-        .on("mouseout", function(d) {
+        .on("mouseout", (_, d) => {
             tooltip.transition()
               .duration(500)
               .style("opacity", 0);
           })
-        .on("click", function(d) {
+        .on("click", (_, d) => {
             if (updateGeo(d.properties.NAME_1) == 0) {
               $("#provinces").dropdown("set selected", d.properties.NAME_1);
               updateGeo(d.properties.NAME_1, 1);
